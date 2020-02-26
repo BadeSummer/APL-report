@@ -1,0 +1,23 @@
+# latex files
+*.pdf
+*.aux
+*.log
+*.synctex.gz
+*.synctex(busy)
+*.out
+*.toc
+
+# jupyter
+*.ipynb_checkpoints/
+.DS_Store
+*.DS_Store
+**/.DS_Store
+
+# help configure
+*_ignore.*
+.vscode/setting.json
+
+# data files
+*~$*.xlsx
+!D?/data/*/*.pdf
+!D?/data/*.pdf
