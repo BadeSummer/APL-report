@@ -1,6 +1,6 @@
 \documentclass{spaexp}
 \major{物理学}
-\name{梁伟德}
+\name{}
 \grade{2017级}
 \stuid{17353038}
 \exptitle{E1\quad 高温超导实验}
@@ -13,7 +13,7 @@
     \section{背景介绍}
     \section{实验原理}
         \subsection{实验目的}
-        \subsection{超导}
+        \subsection{超导（左广信）}
             \subsubsection{超导}
                 当温度降低到超导相变温度时,超导材料将会相变为超导态,具有两个特征:一是零电阻,二是完全抗磁性(迈斯纳效应)。
                 超导体的超导态相变及维持需要三个临界条件,一是温度降低到临界温度$T_c$,二是外部磁场强度低于临界磁场强度$H_c$,三是超导体传导的电流密度低于临界电流密度$J_c$。
@@ -38,7 +38,7 @@
                 根据$\nabla \times E = -\partial B / \partial t$, 且$E=\rho J$, 其中$\rho$为电阻率,对于理想导体$\rho=0$,从而$E=0$,因而磁感应强度B的随时变化率为0,
                 从而我们得知,对于理想导体,加磁场前后导体内部的磁感应强度不变.这一点是与超导体的迈斯纳效应不同的.
 
-        \subsection{降温与保温}
+        \subsection{降温与保温（张旭盈）}
             \subsubsection{低温的获得}
                 取决于制冷和隔热两个因素。
                 \begin{description}
@@ -82,7 +82,7 @@
                     \item 两者制冷的前提：真空环境
                 \end{itemize}
         \subsection{数据采集与分析}
-            \subsubsection{电阻测量}
+            \subsubsection{电阻测量（梁伟德）}
             实验中需要测量材料的电阻作为进入超导态的判断条件。测量接近0的小电阻需要四引线法\autoref{img:四引线测电阻电路原理图}。同时，还需考虑电阻由于不对称而引起的电势差：
             温差电势$V_T$，接触电势$V_C$。若使用直流电流进行测量，则有测量结果：$V_+ = IR + V_C + V_T$，为消除温差电势与接触电势，
             需要再进行一次反向电流的测量：$V_- = -IR + V_C + V_T$，可以得到：
@@ -110,10 +110,64 @@
                 \includegraphics[width = 0.7\textwidth]{dcfourfoot.png}
             \end{figure}
 
+
+            \subsubsection{测量交流磁化率（梁伟棠）}
+                根据电磁理论，在恒定外磁场下，介质对磁场对响应定义了磁化率$\chi$，如式\eqref{MXH}。
+                \begin{equation}
+                    M = \chi H
+                    \label{MXH}
+                \end{equation}
+                假设外磁场以准静止态发生变化，即任一时刻式\eqref{MXH}仍成立，则任意两时刻的差值有式\eqref{acMXH}。
+                \begin{equation}
+                    M'-M=\chi(H'-H)\leftrightarrow \Delta M = \chi \Delta H
+                    \label{acMXH}
+                \end{equation}
+                因此小范围内交变磁场的准静止态变化，交流磁化率$\tilde{\chi}$可参照\eqref{acMXH}定义为
+                \begin{equation}
+                    \tilde{\chi} = \dfrac{\partial M}{\partial H}
+                    \label{acchi}
+                \end{equation}
+                交流磁化率通过一对互感线圈，产生磁场的线圈叫初级线圈，测量感应电动势的线圈叫次级线圈。次级线圈的感应电动势与线圈内部磁感应强度$\tilde{B}$的变化率成正比
+                \begin{equation}
+                    \tilde{\varepsilon} = k_1\dfrac{\partial \tilde{B}}{\partial t}
+                \end{equation}
+                由电磁理论$\tilde{B}=\mu_0 (\tilde{H}+\tilde{M})$，感应电动势可以改写成
+                \begin{equation}
+                    \tilde{\varepsilon} = k_1 \mu_0(1+\tilde{\chi})\dfrac{\partial \tilde{H}}{\partial t}
+                \end{equation}
+                而磁场强度$H$与通过其线圈的电流$\tilde{I}$成正比。
+                \begin{equation}
+                    \tilde{\varepsilon} = k_1 k_2 \mu_0(1+\tilde{\chi})\dfrac{\partial \tilde{I}}{\partial t}
+                \end{equation}
+                由此交流磁化率由
+                \begin{equation}
+                    \tilde{\chi} = \dfrac{\tilde{\varepsilon}}{k_1 k_2\mu_0 \dfrac{\partial \tilde{I}}{\partial t}} - 1
+                    \label{meachi}
+                \end{equation}
+                由式\eqref{meachi}，因为感应电动势$\tilde{\varepsilon}$和电流$\tilde{I}$是复数，所以交流磁化率$\tilde{\chi}$也是复数。
+                \begin{equation}
+                    \tilde{\chi} = \chi ' +\chi ''
+                    \label{complexchi}
+                \end{equation}
+                同时，只要知道了感应电动势$\tilde{\varepsilon}$和电流$\tilde{I}$也就知道了交流磁化率$\tilde{\chi}$，这就是测量交流磁化率的方法。
+                \begin{figure}[h]      
+                    \centering 
+                    \includegraphics[width=0.5\textwidth]{meachi.png}
+                    \caption{差分法测量交流磁化率}\label{chafen}
+                    
+                \end{figure}
+                
+                图\autoref{chafen} 提供了测量交流磁化率的电路图，这里还做了改进，通过并联一组线圈，然后将放入被测样品的线圈的信号减去不放入样品的线圈的信号，来抵消线圈产生的信号$k_1k_2\mu_0\dfrac{\partial \tilde{I}}{\partial t}$。因为线圈的信号$k_1k_2\mu_0\dfrac{\partial \tilde{I}}{\partial t}$远强于$k_1k_2\mu_0\tilde{\chi}\dfrac{\partial \tilde{I}}{\partial t}$。这样并联之后再做差分，就可以提取出$k_1k_2\mu_0\tilde{\chi}\dfrac{\partial \tilde{I}}{\partial t}$这个微弱的信号。所以式\eqref{meachi}可以改写为
+                \begin{equation}
+                    \tilde{\chi} = \dfrac{\tilde{\varepsilon}}{k_1 k_2\mu_0 \dfrac{\partial \tilde{I}}{\partial t}} 
+                    \label{realchi}
+                \end{equation}
+                本实验，交变磁化率$\tilde{\chi}$的测量就是通过式\eqref{realchi}来测定的。
+
             
     
     \section{实验方案}
-        \subsection{液氮制冷获得超导态}
+        \subsection{液氮制冷获得超导态（梁伟德、左广信）}
             \subsubsection{抽取真空}
                 抽取真空需要用到较长时间，所以安装完恒温器后，可以先连接装置气路，开始抽真空，然后再进行其他仪器设备的连接。
                 \begin{longtable}{@{*}p{0.7\textwidth}||p{0.3\textwidth}@{*}}
@@ -199,7 +253,7 @@
                     \label{img:控温仪前面板}
                     \includegraphics[width = 0.6\textwidth]{PIDFront.png}
                 \end{figure}
-
+                \at{1.5}
                 \begin{longtable}{@{*}p{0.7\textwidth}||p{0.3\textwidth}@{*}}
                     \caption{液氮制冷操作步骤}\\
                     \hline\hline
@@ -221,7 +275,7 @@
                 \end{longtable}
                 \clearpage
 
-        \subsection{制冷机制冷获得超导态}
+        \subsection{制冷机制冷获得超导态（张旭盈、梁伟棠）}
     	
             \subsubsection{抽取真空}
                 进行和液氮制冷相同的步骤，见\autoref{tab:抽取真空}。
@@ -273,24 +327,33 @@
                 \end{longtable}
     \section{分析与讨论}
         \subsection{实验思考题}
+        \begin{enumerate}
+            \item 深低温系统为什么要抽真空？真空度要求多高？
             \begin{ans}
-                \begin{enumerate}
-                    \item 深低温系统为什么要抽真空？真空度要求多高？
-                        在真空中热传导和对流可以忽略不计，只有热辐射传热，所以真空是一种很有效的隔热方式。真空度要求至多5Pa。
-                    \item 真空泵产生一定的噪声，在达到真空要求后，是否可以关真空泵？关真空泵前，是否要先关真空阀门？
-                        可以关闭真空泵。先关真空阀，再关真空泵。
-                    \item 为什么要安装屏蔽罩（防辐射屏）？屏蔽罩用哪一类材料最好？
-                        屏蔽罩可以有效减少热辐射传热。用导热性能较好的材料。
-                    \item 请估计直径为12mm、长为100mm，温度为4K的恒温器在无防辐射屏时的漏热约为多少？在采用一层防辐射屏后，其与环境之间的辐射漏热减少了多少？如果将防辐射屏的温度降到液氮温度（77K），则该防辐射屏的辐射漏热又为多少？
-                        设室温为300K.默认题中所问是单位时间的漏热。
-                        无防辐射屏的漏热为：
-                        $\Delta Q_1 = \sigma(T_E^4 - T_L^4)St \\= 5.67032×10^{-8}W/(m^2·K^4)\times(300K^4-4K^4)\times(12mm\times100mm\times\pi+2\times(6mm/2)^2\times\pi)\times1s \\= 2.04\times10^{-5}J$
-                        采用防辐射屏后：
-                        $\Delta Q_2 =\frac12\Delta Q_1 = 1.02\times10^{-5}J$
-                        防辐射屏温度为77K时的辐射漏热：
-   
-                    \item 铂电阻温度计位置不在样品旁边，有什么因素会影响样品温度偏离温度计的温度？偏离有多大？能否通过建模进行定量分析？
-                \end{enumerate}
+                在真空中热传导和对流可以忽略不计，只有热辐射传热，所以真空是一种很有效的隔热方式。真空度要求至多5Pa。
             \end{ans}
+
+            \item 真空泵产生一定的噪声，在达到真空要求后，是否可以关真空泵？关真空泵前，是否要先关真空阀门？
+            \begin{ans}
+                可以关闭真空泵。先关真空阀，再关真空泵。
+            \end{ans}
+            
+            \item 为什么要安装屏蔽罩（防辐射屏）？屏蔽罩用哪一类材料最好？
+            \begin{ans}
+                屏蔽罩可以有效减少热辐射传热。用导热性能较好的材料。
+            \end{ans}
+
+            \item 请估计直径为12mm、长为100mm，温度为4K的恒温器在无防辐射屏时的漏热约为多少？在采用一层防辐射屏后，其与环境之间的辐射漏热减少了多少？如果将防辐射屏的温度降到液氮温度（77K），则该防辐射屏的辐射漏热又为多少？
+            \begin{ans}
+                设室温为300K.默认题中所问是单位时间的漏热。
+                无防辐射屏的漏热为：
+                $\Delta Q_1 = \sigma(T_E^4 - T_L^4)St \\= 5.67032×10^{-8}W/(m^2·K^4)\times(300K^4-4K^4)\times(12mm\times100mm\times\pi+2\times(6mm/2)^2\times\pi)\times1s \\= 2.04\times10^{-5}J$
+                采用防辐射屏后：
+                $\Delta Q_2 =\frac12\Delta Q_1 = 1.02\times10^{-5}J$
+                防辐射屏温度为77K时的辐射漏热：
+            \end{ans}
+   
+            \item 铂电阻温度计位置不在样品旁边，有什么因素会影响样品温度偏离温度计的温度？偏离有多大？能否通过建模进行定量分析？
+            \end{enumerate}
 
 \end{document}
